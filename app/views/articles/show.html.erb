@@ -1,20 +1,29 @@
-<p>
-  <strong>Title: </strong>
-  <%= @article.title %>
-</p>
+<div id="article-wrapper">
+  <div id="article-content">
+    <h2>
+      <strong><%= @article.title %></strong>
+    </h2>
 
-<p>
-  <strong>Text: </strong>
-  <%= @article.text %>
-</p>
+    <p>
+      <%= @article.text %>
+    </p>
 
-<% if @article.comments.any? %>
-<h2>Comments</h2>
-<%= render @article.comments %>
-<% end %>
+    <br>
+    <%= link_to 'Editar', edit_article_path(@article), class: "botonazo" %>
+  </div>
 
-<h2>Add a comment</h2>
-<%= render 'comments/form' %>
+  <hr>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+  <div id="article-comments">
+    <h4>Comentarios</h4>
+    <%= render @article.comments %>
+
+    <% if !@article.comments.any? %>
+    <p id="no-comments">* No hay comentarios :(</p>
+    <% end %>
+
+    <%= render 'comments/form' %>
+  </div>
+
+  <%= link_to 'Articulos', articles_path %>
+</div>
