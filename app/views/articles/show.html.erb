@@ -6,10 +6,14 @@
 
     <p>
       <%= @article.text %>
+      <p style="margin-top:10px;font-size:.9rem;">Por: <%= @article.user.email %></p>
     </p>
 
     <br>
-    <%= link_to 'Editar', edit_article_path(@article), class: "botonazo" %>
+
+    <% if current_user === @article.user %>
+      <%= link_to 'Editar', edit_article_path(@article), class: "botonazo" %>
+    <% end %>
   </div>
 
   <hr>

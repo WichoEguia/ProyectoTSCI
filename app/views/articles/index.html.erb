@@ -6,11 +6,15 @@
 <div class="card">
   <p><strong><%= article.title %></strong></p>
   <p><%= article.text %></p>
+  <p style="margin-top:10px;font-size:.9rem;">Por: <%= article.user.email %></p>
 
   <div>
     <%= link_to "Ver", article_path(article), class: "botonazo" %>
-    <%= link_to "Editar", edit_article_path(article), class: "botonazo" %>
-    <%= link_to "Borrar", article_path(article), class: "botonazo", method: :delete, data: { confirm: 'Are you sure?' } %>
+
+    <% if current_user === article.user %>
+      <%= link_to "Editar", edit_article_path(article), class: "botonazo" %>
+      <%= link_to "Borrar", article_path(article), class: "botonazo", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </div>
 </div>
 <% end %>

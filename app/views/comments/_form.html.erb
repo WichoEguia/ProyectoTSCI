@@ -1,9 +1,5 @@
 <%= form_with model: [ @article, @article.comments.build ], local: true do |form| %>
 <div>
-  <%= form.label :commenter, "Nombre" %><br>
-  <%= form.text_field :commenter %>
-</div>
-<div>
   <%= form.label :body, "Comentario" %><br>
   <%= form.text_area :body %>
 </div>

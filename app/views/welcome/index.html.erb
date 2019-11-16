@@ -9,6 +9,8 @@
     <h3>Esly Issaí Moreno Calderón - 1791946</h3>
   </div>
   <div>
+  <% if user_signed_in? %>
     <%= link_to "My Blog", { controller: "articles" }, class: "botonazo" %>
+  <% end %>
   </div>
 </div>

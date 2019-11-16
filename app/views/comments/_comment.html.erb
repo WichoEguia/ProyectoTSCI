@@ -1,6 +1,6 @@
 <div class="card">
   <p>
-    <strong><%= comment.commenter %></strong>
+    <strong>Por: <%= comment.user.email %></strong>
   </p>
 
   <p id="comment-body">
@@ -8,5 +8,8 @@
   </p>
 
   <br>
-  <%= link_to "Borrar", [comment.article, comment], class: "botonazo", method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  <% if current_user === comment.user %>
+    <%= link_to "Borrar", [comment.article, comment], class: "botonazo", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 </div>
